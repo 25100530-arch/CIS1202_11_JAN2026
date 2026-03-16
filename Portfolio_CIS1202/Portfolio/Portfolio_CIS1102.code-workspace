@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../Portfolio_CIS1102"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "CIS1202_11_JAN2026"
+	}
+}

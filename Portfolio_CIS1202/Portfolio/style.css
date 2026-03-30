@@ -1,18 +1,62 @@
-/* CSS Variables for professional dark theme with green accents */
+/* Professional Light & Dark Theme Color System */
 :root {
-  --primary-color: #7ec88a; /* Sage green for links and accents */
-  --secondary-color: #b0b0b0; /* Light gray for secondary text */
-  --background-color: #1a1a1a; /* Dark background */
-  --text-color: #ffffff; /* White text */
-  --header-bg: #2d2d2d; /* Dark header background */
-  --footer-bg: #1a1a1a; /* Dark footer */
-  --card-bg: #ffffff; /* White cards */
-  --card-text: #212529; /* Dark text on cards */
-  --border-color: #404040; /* Dark border */
+  /* Light Theme Colors */
+  --light-primary-color: #2563eb; /* Professional blue */
+  --light-secondary-color: #64748b; /* Slate gray */
+  --light-background-color: #f8fafc; /* Off-white background */
+  --light-text-color: #1e293b; /* Dark text */
+  --light-header-bg: #ffffff; /* White header */
+  --light-footer-bg: #f1f5f9; /* Light gray footer */
+  --light-card-bg: #ffffff; /* White cards */
+  --light-card-text: #1e293b; /* Dark text on cards */
+  --light-border-color: #e2e8f0; /* Light gray border */
+  --light-shadow: rgba(0, 0, 0, 0.08); /* Subtle shadow */
+
+  /* Dark Theme Colors */
+  --dark-primary-color: #60a5fa; /* Light blue */
+  --dark-secondary-color: #94a3b8; /* Slate gray */
+  --dark-background-color: #0f172a; /* Very dark background */
+  --dark-text-color: #f1f5f9; /* Light text */
+  --dark-header-bg: #1e293b; /* Dark header */
+  --dark-footer-bg: #0f172a; /* Very dark footer */
+  --dark-card-bg: #1e293b; /* Dark cards */
+  --dark-card-text: #f1f5f9; /* Light text on cards */
+  --dark-border-color: #334155; /* Dark border */
+  --dark-shadow: rgba(0, 0, 0, 0.4); /* Darker shadow */
+
+  /* Default to Light Theme */
+  --primary-color: var(--light-primary-color);
+  --secondary-color: var(--light-secondary-color);
+  --background-color: var(--light-background-color);
+  --text-color: var(--light-text-color);
+  --header-bg: var(--light-header-bg);
+  --footer-bg: var(--light-footer-bg);
+  --card-bg: var(--light-card-bg);
+  --card-text: var(--light-card-text);
+  --border-color: var(--light-border-color);
+  --shadow-color: var(--light-shadow);
+}
+
+/* Dark Theme Activation */
+html[data-theme="dark"] {
+  --primary-color: var(--dark-primary-color);
+  --secondary-color: var(--dark-secondary-color);
+  --background-color: var(--dark-background-color);
+  --text-color: var(--dark-text-color);
+  --header-bg: var(--dark-header-bg);
+  --footer-bg: var(--dark-footer-bg);
+  --card-bg: var(--dark-card-bg);
+  --card-text: var(--dark-card-text);
+  --border-color: var(--dark-border-color);
+  --shadow-color: var(--dark-shadow);
+}
+
+/* Smooth transitions between themes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Basic styling for the portfolio */
-
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -25,8 +69,24 @@ body {
 header {
   background-color: var(--header-bg);
   padding: 2rem 1rem;
-  text-align: center;
   border-bottom: 2px solid var(--primary-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-content {
+  text-align: left;
+  flex: 1;
+  min-width: 250px;
 }
 
 header h1 {
@@ -43,18 +103,69 @@ header p {
   font-size: 1rem;
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle .sun-icon,
+.theme-toggle .moon-icon {
+  position: absolute;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle .moon-icon {
+  opacity: 0;
+  transform: rotate(0deg);
+}
+
+html[data-theme="dark"] .theme-toggle .sun-icon {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+html[data-theme="dark"] .theme-toggle .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
 nav ul {
   list-style: none;
   padding: 0;
   margin: 1rem 0 0 0;
   display: flex;
-  justify-content: space-around; /* Evenly spaces links across the container */
+  justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 nav li {
-  flex: 1; /* Each li takes equal space */
+  flex: 1;
   text-align: center;
 }
 
@@ -71,7 +182,7 @@ nav a {
 
 nav a:hover {
   color: var(--primary-color);
-  background-color: rgba(126, 200, 138, 0.1);
+  background-color: rgba(37, 99, 235, 0.1);
   border-bottom: 2px solid var(--primary-color);
 }
 
@@ -87,7 +198,7 @@ section {
   background-color: var(--card-bg);
   color: var(--card-text);
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 24px var(--shadow-color);
 }
 
 section h2 {
@@ -106,7 +217,7 @@ section h2 {
   display: block;
   margin: 0 auto 1.5rem auto;
   border: 4px solid var(--primary-color);
-  box-shadow: 0 10px 30px rgba(126, 200, 138, 0.3);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
 }
 
 footer {
@@ -119,7 +230,7 @@ footer {
   left: 0;
   right: 0;
   height: auto;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 -4px 12px var(--shadow-color);
   font-size: 0.9rem;
   color: var(--secondary-color);
 }

@@ -132,6 +132,7 @@ body::before {
     font-weight: 700;
     text-align: center;
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-accent) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);

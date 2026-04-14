@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Traffic Control Dashboard - 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Main Visual Simulation Area -->
+        <main class="visual-simulation">
+            <h1 class="dashboard-title">🚦 Intelligent Traffic Control System</h1>
+            
+            <!-- Intersection Grid Visualization -->
+            <div class="intersection-grid">
+                <!-- North-South Intersection -->
+                <div class="intersection ns-intersection">
+                    <h2 class="intersection-label">North-South 🔄</h2>
+                    <div class="traffic-lights-group">
+                        <div class="traffic-light-container">
+                            <div class="traffic-light">
+                                <div id="ns-red" class="light red"></div>
+                                <div id="ns-yellow" class="light yellow"></div>
+                                <div id="ns-green" class="light green"></div>
+                            </div>
+                            <p class="light-label">Signal Status</p>
+                        </div>
+                        <div class="state-info">
+                            <p>Current State: <span id="ns-state" class="state-value">RED</span></p>
+                            <p>Duration: <span id="ns-duration" class="duration-value">0s</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- East-West Intersection -->
+                <div class="intersection ew-intersection">
+                    <h2 class="intersection-label">East-West ↔️</h2>
+                    <div class="traffic-lights-group">
+                        <div class="traffic-light-container">
+                            <div class="traffic-light">
+                                <div id="ew-red" class="light red"></div>
+                                <div id="ew-yellow" class="light yellow"></div>
+                                <div id="ew-green" class="light green"></div>
+                            </div>
+                            <p class="light-label">Signal Status</p>
+                        </div>
+                        <div class="state-info">
+                            <p>Current State: <span id="ew-state" class="state-value">GREEN</span></p>
+                            <p>Duration: <span id="ew-duration" class="duration-value">0s</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <h3>Manual Control</h3>
+                <button id="trigger-switch-btn" class="control-btn primary">
+                    🔄 Switch Lights
+                </button>
+                <button id="reset-btn" class="control-btn secondary">
+                    🔄 Reset System
+                </button>
+                <div class="system-status">
+                    <p>System Status: <span id="system-status" class="status-indicator">🟢 READY</span></p>
+                    <p>Transitions Queue: <span id="queue-count" class="queue-indicator">0</span></p>
+                </div>
+            </div>
+        </main>
+
+        <!-- System Logs Sidebar -->
+        <aside class="system-logs">
+            <div class="logs-header">
+                <h3>📋 System Logs</h3>
+                <button id="clear-logs-btn" class="clear-btn">Clear</button>
+            </div>
+            <div id="logs-container" class="logs-container">
+                <div class="log-entry initial">
+                    <span class="log-time">[00:00:00]</span>
+                    <span class="log-message">System initialized. NS: RED → EW: GREEN</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="logic.js"></script>
+</body>
+</html>
